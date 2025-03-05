@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - Document Tracking System</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <div class="logo">
+            <!-- <i class="fas fa-file-invoice"></i> -->
+            <span>DTS Admin</span>
+          </div>
+          <button id="sidebar-toggle" class="sidebar-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+
+        <div class="sidebar-user">
+          <div class="user-avatar">
+            <img src="https://via.placeholder.com/50" alt="Admin User" />
+          </div>
+          <div class="user-info">
+            <h4>Admin User</h4>
+            <p>Administrator</p>
+          </div>
+        </div>
+
+        <ul class="sidebar-nav">
+          <li class="sidebar-item active">
+            <a href="#" class="sidebar-link">
+              <i class="fas fa-tachometer-alt"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+
+          <li class="sidebar-category">Document Management</li>
+
+          <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+              <i class="fas fa-file-alt"></i>
+              <span>All Documents</span>
+            </a>
+          </li>
+
+          <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+              <i class="fas fa-clock"></i>
+              <span>Pending Documents</span>
+              <span class="badge">5</span>
+            </a>
+          </li>
+
+          <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+              <i class="fas fa-check-circle"></i>
+              <span>Approved Documents</span>
+            </a>
+          </li>
+
+          <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+              <i class="fas fa-archive"></i>
+              <span>Archived Documents</span>
+            </a>
+          </li>
+
+          <li class="sidebar-category">Administration</li>
+
+          <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+              <i class="fas fa-users"></i>
+              <span>User Management</span>
+            </a>
+          </li>
+
+          <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+              <i class="fas fa-building"></i>
+              <span>Departments</span>
+            </a>
+          </li>
+
+          <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+              <i class="fas fa-chart-pie"></i>
+              <span>Reports & Analytics</span>
+            </a>
+          </li>
+
+          <li class="sidebar-category">System</li>
+
+          <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+              <i class="fas fa-bell"></i>
+              <span>Notifications</span>
+              <span class="badge alert">3</span>
+            </a>
+          </li>
+
+          <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+              <i class="fas fa-cog"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+
+          <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+              <i class="fas fa-user-circle"></i>
+              <span>Profile</span>
+            </a>
+          </li>
+
+          <li class="sidebar-item logout">
+            <a href="#" class="sidebar-link">
+              <i class="fas fa-sign-out-alt"></i>
+              <span>Logout</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <main class="main-content">
+        <header class="top-navbar">
+          <button id="mobile-toggle" class="mobile-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+          <h1>Dashboard</h1>
+          <div class="top-navbar-right">
+            <a href="#" class="notification-icon">
+              <i class="fas fa-bell"></i>
+              <span class="badge">3</span>
+            </a>
+            <a href="#" class="user-menu">
+              <img src="https://via.placeholder.com/30" alt="Admin" />
+            </a>
+          </div>
+        </header>
+
+        <div class="content">
+          <!-- Dashboard content -->
+          <div class="content-placeholder">
+            <h2>Admin Dashboard Content</h2>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      // Toggle sidebar on mobile
+      document
+        .getElementById("mobile-toggle")
+        .addEventListener("click", function () {
+          document.getElementById("sidebar").classList.toggle("active");
+        });
+
+      // Toggle sidebar collapse
+      document
+        .getElementById("sidebar-toggle")
+        .addEventListener("click", function () {
+          document.getElementById("sidebar").classList.toggle("collapsed");
+          document.querySelector(".main-content").classList.toggle("expanded");
+        });
+
+      // Add active class to sidebar items
+      const sidebarItems = document.querySelectorAll(".sidebar-item");
+      sidebarItems.forEach((item) => {
+        item.addEventListener("click", function () {
+          sidebarItems.forEach((i) => i.classList.remove("active"));
+          this.classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>
