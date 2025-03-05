@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document Tracking System</title>
     <link href="./Navbar/navbar.css" rel="stylesheet" />
+    <link href="./herosection/herosection.css" rel="stylesheet" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -20,8 +21,8 @@
 
     <!-- Your main content goes here -->
     <main>
-      <h1>Welcome to Document Tracking System</h1>
       <!-- Rest of your content -->
+      <div id="herosection-container"></div>
     </main>
 
     <script>
@@ -29,15 +30,51 @@
       fetch("./Navbar/navbar.html")
         .then((response) => response.text())
         .then((html) => {
-          // Extract the navbar element
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(html, "text/html");
-          const navbar = doc.querySelector(".navbar");
+          // Insert the navbar HTML directly into the container
+          document.getElementById("navbar-container").innerHTML = html;
 
-          // Insert it into the container
-          document.getElementById("navbar-container").appendChild(navbar);
+          // Re-attach the event listener for mobile menu
+          const navbarToggle = document.getElementById("navbar-toggle");
+          if (navbarToggle) {
+            navbarToggle.addEventListener("click", function () {
+              document
+                .getElementById("navbar-links")
+                .classList.toggle("active");
+            });
+          }
         })
         .catch((error) => console.error("Error loading the navbar:", error));
+
+      // Load the hero section content
+      fetch("./HeroSection/herosection.html")
+        .then((response) => response.text())
+        .then((html) => {
+          // Fix paths in the HTML - replace relative paths with absolute paths relative to index.html
+          let fixedHtml = html.replace(
+            /"\.\.\/auth\/guest\/logIn\.html"/g,
+            '"./auth/guest/logIn.html"'
+          );
+          fixedHtml = fixedHtml.replace(
+            /"\.\.\/images\/dts\.png"/g,
+            '"./images/dts.png"'
+          );
+
+          // Extract the hero section elements
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(fixedHtml, "text/html");
+          const heroSection = doc.querySelector(".hero");
+          const featuresSection = doc.querySelector(".features");
+          const footer = doc.querySelector("footer");
+
+          // Insert them into the container
+          const container = document.getElementById("herosection-container");
+          container.appendChild(heroSection);
+          container.appendChild(featuresSection);
+          container.appendChild(footer);
+        })
+        .catch((error) =>
+          console.error("Error loading the hero section:", error)
+        );
     </script>
   </body>
 </html>

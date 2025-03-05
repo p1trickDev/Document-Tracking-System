@@ -8,16 +8,35 @@
   </head>
   <body>
     <nav class="navbar">
-      <div class="navbar-logo">DTS</div>
-      <ul class="navbar-links">
-        <li class="navbar-item"><a href="/">Home</a></li>
-        <li class="navbar-item"><a href="/about">About</a></li>
-        <li class="navbar-item"><a href="/faq">faq</a></li>
-      </ul>
-      <div class="navbar-auth">
-        <a href="/App/auth/guest/logIn.html" class="auth-btn login">Log In</a>
-        <!-- <a href="/signup" class="auth-btn signup">Sign Up</a> -->
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="/">
+            <i class="fas fa-file-invoice"></i>
+            DTS
+          </a>
+        </div>
+        <div class="navbar-toggle" id="navbar-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+        <ul class="navbar-links" id="navbar-links">
+          <li class="navbar-item"><a href="/">Home</a></li>
+          <li class="navbar-item"><a href="/about">About</a></li>
+          <li class="navbar-item"><a href="/faq">FAQ</a></li>
+        </ul>
+        <div class="navbar-auth">
+          <a href="./auth/guest/logIn.html" class="auth-btn login">
+            <i class="fas fa-user"></i> Log In
+          </a>
+        </div>
       </div>
     </nav>
+
+    <script>
+      document
+        .getElementById("navbar-toggle")
+        .addEventListener("click", function () {
+          document.getElementById("navbar-links").classList.toggle("active");
+        });
+    </script>
   </body>
 </html>
